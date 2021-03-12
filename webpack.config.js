@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve('.', 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['*', '.js'],
   },
   module: {
     rules: [
@@ -26,12 +26,12 @@ module.exports = {
     new HtmlWebpackPlugin(
       {
         inject: true,
-        template: './public/index.html',
+        template: path.resolve('.', 'public', 'index.html'),
         filename: './index.html',
       }
     ),
     new CopyWebpackPlugin([{
-      from: './src/styles/styles.css',
+      from: path.resolve('.', 'src', 'static'),
       to: ''
     }])
   ]
